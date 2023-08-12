@@ -18,7 +18,7 @@
 
 import html
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Dict, Any, Optional
 
 import pyrogram
 from pyrogram import enums, utils
@@ -145,6 +145,10 @@ class User(Object, Update):
             You can use ``user.mention()`` to mention the user using their first name (styled using html), or
             ``user.mention("another name")`` for a custom name. To choose a different style
             ("html" or "md"/"markdown") use ``user.mention(style="md")``.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
     """
 
     def __init__(
@@ -174,7 +178,8 @@ class User(Object, Update):
         dc_id: int = None,
         phone_number: str = None,
         photo: "types.ChatPhoto" = None,
-        restrictions: List["types.Restriction"] = None
+        restrictions: List["types.Restriction"] = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -202,6 +207,7 @@ class User(Object, Update):
         self.phone_number = phone_number
         self.photo = photo
         self.restrictions = restrictions
+        self.rider_content = rider_content
 
     @property
     def mention(self):

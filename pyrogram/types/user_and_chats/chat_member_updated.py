@@ -17,7 +17,7 @@
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
 from datetime import datetime
-from typing import Dict, Union
+from typing import Dict, Any, Union
 
 import pyrogram
 from pyrogram import raw, utils
@@ -47,6 +47,10 @@ class ChatMemberUpdated(Object, Update):
 
         invite_link (:obj:`~pyrogram.types.ChatInviteLink`, *optional*):
             Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
     """
 
     def __init__(
@@ -59,6 +63,7 @@ class ChatMemberUpdated(Object, Update):
         old_chat_member: "types.ChatMember",
         new_chat_member: "types.ChatMember",
         invite_link: "types.ChatInviteLink" = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -68,6 +73,7 @@ class ChatMemberUpdated(Object, Update):
         self.old_chat_member = old_chat_member
         self.new_chat_member = new_chat_member
         self.invite_link = invite_link
+        self.rider_content = rider_content
 
     @staticmethod
     def _parse(

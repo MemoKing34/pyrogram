@@ -16,7 +16,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from typing import List, Match
+from typing import List, Dict, Any, Match
 
 import pyrogram
 from pyrogram import raw
@@ -52,6 +52,10 @@ class InlineQuery(Object, Update):
         matches (List of regex Matches, *optional*):
             A list containing all `Match Objects <https://docs.python.org/3/library/re.html#match-objects>`_ that match
             the query of this inline query. Only applicable when using :obj:`Filters.regex <pyrogram.Filters.regex>`.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
     """
 
     def __init__(
@@ -64,7 +68,8 @@ class InlineQuery(Object, Update):
         offset: str,
         chat_type: "enums.ChatType",
         location: "types.Location" = None,
-        matches: List[Match] = None
+        matches: List[Match] = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -75,6 +80,7 @@ class InlineQuery(Object, Update):
         self.chat_type = chat_type
         self.location = location
         self.matches = matches
+        self.rider_content = rider_content
 
     @staticmethod
     def _parse(client, inline_query: raw.types.UpdateBotInlineQuery, users: dict) -> "InlineQuery":

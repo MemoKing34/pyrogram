@@ -17,7 +17,7 @@
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
 from datetime import datetime
-from typing import List, Union, Optional
+from typing import List, Dict, Any, Union, Optional
 
 import pyrogram
 from pyrogram import raw, enums, utils
@@ -74,6 +74,10 @@ class Poll(Object, Update):
 
         close_date (:py:obj:`~datetime.datetime`, *optional*):
             Point in time when the poll will be automatically closed.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
     """
 
     def __init__(
@@ -93,7 +97,8 @@ class Poll(Object, Update):
         explanation: Optional[str] = None,
         explanation_entities: Optional[List["types.MessageEntity"]] = None,
         open_period: Optional[int] = None,
-        close_date: Optional[datetime] = None
+        close_date: Optional[datetime] = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -111,6 +116,7 @@ class Poll(Object, Update):
         self.explanation_entities = explanation_entities
         self.open_period = open_period
         self.close_date = close_date
+        self.rider_content = rider_content
 
     @staticmethod
     def _parse(client, media_poll: Union["raw.types.MessageMediaPoll", "raw.types.UpdateMessagePoll"]) -> "Poll":

@@ -16,7 +16,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from typing import Union, List, Match, Optional
+from typing import Union, List, Dict, Any, Match, Optional
 
 import pyrogram
 from pyrogram import raw, enums
@@ -60,6 +60,10 @@ class CallbackQuery(Object, Update):
         matches (List of regex Matches, *optional*):
             A list containing all `Match Objects <https://docs.python.org/3/library/re.html#match-objects>`_ that match
             the data of this callback query. Only applicable when using :obj:`Filters.regex <pyrogram.Filters.regex>`.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filterss
     """
 
     def __init__(
@@ -73,7 +77,8 @@ class CallbackQuery(Object, Update):
         inline_message_id: str = None,
         data: Union[str, bytes] = None,
         game_short_name: str = None,
-        matches: List[Match] = None
+        matches: List[Match] = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -85,6 +90,7 @@ class CallbackQuery(Object, Update):
         self.data = data
         self.game_short_name = game_short_name
         self.matches = matches
+        self.rider_content = rider_content
 
     @staticmethod
     async def _parse(client: "pyrogram.Client", callback_query, users) -> "CallbackQuery":

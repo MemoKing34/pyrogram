@@ -19,7 +19,7 @@
 import logging
 from datetime import datetime
 from functools import partial
-from typing import List, Match, Union, BinaryIO, Optional, Callable
+from typing import List, Dict, Any, Match, Union, BinaryIO, Optional, Callable
 
 import pyrogram
 from pyrogram import raw, enums
@@ -258,7 +258,7 @@ class Message(Object, Update):
         views (``int``, *optional*):
             Channel post views.
 	    
-	forwards (``int``, *optional*):
+	    forwards (``int``, *optional*):
             Channel post forwards.
 
         via_bot (:obj:`~pyrogram.types.User`):
@@ -278,6 +278,10 @@ class Message(Object, Update):
             A list containing the command and its arguments, if any.
             E.g.: "/start 1 2 3" would produce ["start", "1", "2", "3"].
             Only applicable when using :obj:`~pyrogram.filters.command`.
+
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
 
         video_chat_scheduled (:obj:`~pyrogram.types.VideoChatScheduled`, *optional*):
             Service message: voice chat scheduled.
@@ -373,6 +377,7 @@ class Message(Object, Update):
         outgoing: bool = None,
         matches: List[Match] = None,
         command: List[str] = None,
+        rider_content: Dict[str, Dict[str, Any]] = None,
         video_chat_scheduled: "types.VideoChatScheduled" = None,
         video_chat_started: "types.VideoChatStarted" = None,
         video_chat_ended: "types.VideoChatEnded" = None,
@@ -450,6 +455,7 @@ class Message(Object, Update):
         self.outgoing = outgoing
         self.matches = matches
         self.command = command
+        self.rider_content = rider_content
         self.reply_markup = reply_markup
         self.video_chat_scheduled = video_chat_scheduled
         self.video_chat_started = video_chat_started

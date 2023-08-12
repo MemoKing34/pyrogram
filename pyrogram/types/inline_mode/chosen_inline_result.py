@@ -18,6 +18,7 @@
 
 from base64 import b64encode
 from struct import pack
+from typing import List, Dict, Any
 
 import pyrogram
 from pyrogram import raw
@@ -51,6 +52,10 @@ class ChosenInlineResult(Object, Update):
             Identifier of the sent inline message.
             Available only if there is an :doc:`inline keyboard <InlineKeyboardMarkup>` attached to the message.
             Will be also received in :doc:`callback queries <CallbackQuery>` and can be used to edit the message.
+        
+        rider_content (``dict``, *optional*):
+            A dict containing the extra content if any.
+            You can full it with your filters
     """
 
     def __init__(
@@ -61,7 +66,8 @@ class ChosenInlineResult(Object, Update):
         from_user: "types.User",
         query: str,
         location: "types.Location" = None,
-        inline_message_id: str = None
+        inline_message_id: str = None,
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
@@ -70,6 +76,7 @@ class ChosenInlineResult(Object, Update):
         self.query = query
         self.location = location
         self.inline_message_id = inline_message_id
+        self.rider_content = rider_content
 
     @staticmethod
     def _parse(client, chosen_inline_result: raw.types.UpdateBotInlineSend, users) -> "ChosenInlineResult":
