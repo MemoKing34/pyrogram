@@ -63,7 +63,7 @@ class ChatMemberUpdated(Object, Update):
         old_chat_member: "types.ChatMember",
         new_chat_member: "types.ChatMember",
         invite_link: "types.ChatInviteLink" = None,
-        rider_content: Dict[str, Dict[str, Any]] = None
+        rider_content: Dict[str, Dict[str, Any]] = dict()
     ):
         super().__init__(client)
 

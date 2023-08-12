@@ -69,7 +69,7 @@ class InlineQuery(Object, Update):
         chat_type: "enums.ChatType",
         location: "types.Location" = None,
         matches: List[Match] = None,
-        rider_content: Dict[str, Dict[str, Any]] = None
+        rider_content: Dict[str, Dict[str, Any]] = dict()
     ):
         super().__init__(client)
 

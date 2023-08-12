@@ -67,7 +67,7 @@ class ChosenInlineResult(Object, Update):
         query: str,
         location: "types.Location" = None,
         inline_message_id: str = None,
-        rider_content: Dict[str, Dict[str, Any]] = None
+        rider_content: Dict[str, Dict[str, Any]] = dict()
     ):
         super().__init__(client)
 
