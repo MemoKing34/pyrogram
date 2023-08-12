@@ -174,14 +174,14 @@ me = create(me_filter)
 # endregion
 
 # region client_filter
-def client_filter(name: str):
+def client_filter(client_name: str):
     """Filter clients by its name"""
     async def func(flt, client: pyrogram.Client, __):
-        return flt.name == client.name
+        return flt.client_name == client.name
     return create(
         func,
         "ClientFilter",
-        name=name
+        client_name=client_name
     )
 
 
