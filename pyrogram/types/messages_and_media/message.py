@@ -377,7 +377,7 @@ class Message(Object, Update):
         outgoing: bool = None,
         matches: List[Match] = None,
         command: List[str] = None,
-        rider_content: Dict[str, Dict[str, Any]] = dict(),
+        rider_content: Dict[str, Dict[str, Any]] = None,
         video_chat_scheduled: "types.VideoChatScheduled" = None,
         video_chat_started: "types.VideoChatStarted" = None,
         video_chat_ended: "types.VideoChatEnded" = None,

@@ -98,7 +98,7 @@ class Poll(Object, Update):
         explanation_entities: Optional[List["types.MessageEntity"]] = None,
         open_period: Optional[int] = None,
         close_date: Optional[datetime] = None,
-        rider_content: Dict[str, Dict[str, Any]] = dict()
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 

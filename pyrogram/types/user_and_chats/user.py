@@ -179,7 +179,7 @@ class User(Object, Update):
         phone_number: str = None,
         photo: "types.ChatPhoto" = None,
         restrictions: List["types.Restriction"] = None,
-        rider_content: Dict[str, Dict[str, Any]] = dict()
+        rider_content: Dict[str, Dict[str, Any]] = None
     ):
         super().__init__(client)
 
