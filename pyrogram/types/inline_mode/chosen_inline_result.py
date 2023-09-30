@@ -76,7 +76,7 @@ class ChosenInlineResult(Object, Update):
         self.query = query
         self.location = location
         self.inline_message_id = inline_message_id
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @staticmethod
     def _parse(client, chosen_inline_result: raw.types.UpdateBotInlineSend, users) -> "ChosenInlineResult":

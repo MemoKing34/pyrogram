@@ -207,7 +207,7 @@ class User(Object, Update):
         self.phone_number = phone_number
         self.photo = photo
         self.restrictions = restrictions
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @property
     def mention(self):

@@ -73,7 +73,7 @@ class ChatMemberUpdated(Object, Update):
         self.old_chat_member = old_chat_member
         self.new_chat_member = new_chat_member
         self.invite_link = invite_link
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @staticmethod
     def _parse(

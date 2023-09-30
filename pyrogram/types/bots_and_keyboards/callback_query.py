@@ -90,7 +90,7 @@ class CallbackQuery(Object, Update):
         self.data = data
         self.game_short_name = game_short_name
         self.matches = matches
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @staticmethod
     async def _parse(client: "pyrogram.Client", callback_query, users) -> "CallbackQuery":

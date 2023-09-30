@@ -116,7 +116,7 @@ class Poll(Object, Update):
         self.explanation_entities = explanation_entities
         self.open_period = open_period
         self.close_date = close_date
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @staticmethod
     def _parse(client, media_poll: Union["raw.types.MessageMediaPoll", "raw.types.UpdateMessagePoll"]) -> "Poll":

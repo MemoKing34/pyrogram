@@ -80,7 +80,7 @@ class InlineQuery(Object, Update):
         self.chat_type = chat_type
         self.location = location
         self.matches = matches
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
 
     @staticmethod
     def _parse(client, inline_query: raw.types.UpdateBotInlineQuery, users: dict) -> "InlineQuery":

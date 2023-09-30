@@ -455,7 +455,7 @@ class Message(Object, Update):
         self.outgoing = outgoing
         self.matches = matches
         self.command = command
-        self.rider_content = rider_content
+        self.rider_content = rider_content if rider_content else {}
         self.reply_markup = reply_markup
         self.video_chat_scheduled = video_chat_scheduled
         self.video_chat_started = video_chat_started
